@@ -1,0 +1,73 @@
+一、项目介绍
+	内容介绍：一个员工信息管理的demo
+	功能介绍：
+		- 登陆功能
+			- 验证码
+			-MD5解密
+		- 注册功能
+			-MD5加密
+		- 员工的增、删、改、查
+			-查询：分页查询
+二、开发步骤
+	框架搭建，SSM整合
+		1.引入jar包
+		2.写配置文件
+			web.xml
+			springmvc-servlet.xml
+			applicationContext.xml
+			(mybatis-config.xml:如果有需求可以单独配置mybatis配置文件)
+				
+	业务功能开发
+		1.数据库连接与实现
+		2.再开发业务层
+	
+	其他小功能完善
+	
+Mybatis逆向工程：
+		查看官方文档:
+		-http://www.mybatis.org/mybatis-3/getting-started.html
+		1.getting start:获取配置文件头
+		2.配置全局配置文件，先配置settings
+			Configuaration XML --> setting
+			1.驼峰命名规则：mapUnderscoreToCamelCase （选配）
+			2.类型别名：typeAliases
+		3.创建表
+			User，Emp
+		-http://www.mybatis.org/generator/
+		4.使用Mybatis提供的逆向工程，生成bean和mapper。
+			1.引jar包
+			2.根据quickstart指示来，看示例
+			3.创建mbg.xml放在工程根目录下，从实例复制过来，修改（table生成看下文档）
+			4.Running MyBatis Generator > With Java
+				新建测试类，新建main方法，赋值代码
+			5.配置生成文件不带注释
+			XML Configuration Reference -> <commentGenerator> -> Example
+			配置到mbg.xml里
+			6.生成测试类MBPTest.java
+			7.单元测试
+				1.导入Springtest模块
+				2.为测试类添加注解，加载spring配置文件
+				@ContextConfiguration(locations={"classpath:applicationContext.xml"})
+				3.添加注释，注释使用哪个单元测试
+				@RunWith(SpringJUnit4ClassRunner.class)
+				4.可以使用Autowired获得测试的mapper对象
+				5.测试方法上添加@Test注释
+				6.insert时候添加实体列对象，需要将实体类添加有参构造方法，插入单条数据
+				7.批量插入数据
+					-直接for循环单条数据插入语句
+					-使用批量操作的sqlSession
+						applicationContext.xml中配置一个可以额执行批量的sqlSession
+					-测试类获得这个sqlSession
+					
+快捷键：
+	ctrl+h ： 带条件搜索（鼠标放在console的空白处，选择file选项卡）
+	ctrl+shift+r:搜索资源，按文件名搜索（java类，jsp页面等。。。）
+	ctrl+shift+t:搜索类文件，按类文件名搜索（java类）
+	
+	
+	
+	
+	
+	
+	
+	
